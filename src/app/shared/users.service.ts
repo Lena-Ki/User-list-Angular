@@ -14,12 +14,12 @@ interface User {
 @Injectable({providedIn: 'root'})
 export class UsersService {
   public users: any[] = [
-    {id: 1, name: 'Helen', sex: 'female', date: new Date(), marital: true, edu: 'uni', num: 8903, edit: false},
-    {id: 2, name: 'Helen Helen Helen Helen Helen', sex: 'female', date: new Date(), marital: false, edu: 'uni', num: 8903, edit: true},
-    {id: 3, name: 'Helen', sex: 'female', date: new Date(), marital: false, edu: 'uni', num: 8903, edit: false},
+    {id: 1, name: 'Helen', sex: 'female', date: 764812800000, marital: true, edu: 'SpSU', num: 89034534543, edit: false},
+    {id: 2, name: 'Helen Helen Helen Helen Helen', sex: 'female', date: 764812800000, marital: false, edu: 'MSU', num: 89033452133, edit: false},
+    {id: 3, name: 'Helen', sex: 'female', date: 764812800000, marital: false, edu: 'KFU', num: 89032565776, edit: false},
   ]
 
-  editUser(id: number) {
+  toggleEdit(id: number) {
     const idx = this.users.findIndex(u => u.id === id)
     this.users[idx].edit = !this.users[idx].edit
   }

@@ -5,7 +5,7 @@ interface User {
   id: number
   name: string
   sex: string
-  date: any
+  date: number
   marital: boolean
   edu: string
   num: string
@@ -18,13 +18,18 @@ interface User {
 })
 
 export class UsersComponent implements OnInit {
-
   constructor(private usersService: UsersService) { }
-
   ngOnInit() { }
 
-  editUser(id: number) {
-    this.usersService.editUser(id)
+  toggleEdit(id: number) {
+    this.usersService.toggleEdit(id)
+  }
+
+  public showForm: boolean = false
+  
+  toggleShow() {
+    console.log('show form', this.showForm)
+    this.showForm = !this.showForm
   }
 
   deleteUser(id: number) {
@@ -41,7 +46,22 @@ export class UsersComponent implements OnInit {
 
   addUser() {
     const user: User = {
-      id: this.id,
+      id: this.usersService.users.length + 1,
+      name: this.name,
+      sex: this.sex,
+      date: Date.parse(this.date),
+      marital: this.marital,
+      edu: this.edu,
+      num: this.num,
+      edit: false,
+    }
+    this.usersService.addUser(user)
+
+  }
+
+  editUser(id: number) {
+    const user: User = {
+      id: id,
       name: this.name,
       sex: this.sex,
       date: this.date,
@@ -52,4 +72,6 @@ export class UsersComponent implements OnInit {
     }
     this.usersService.addUser(user)
   }
+
+
 }
