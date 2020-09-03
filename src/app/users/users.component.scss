@@ -3,6 +3,7 @@
   border-collapse: collapse;
   
   > :first-child {
+    font-size: .85rem;
     background-color: rgba(0,0,0,.03)
   }
 
@@ -39,11 +40,14 @@
 // new user form style
 
 .new-user-form {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+
+  font-size: .9rem;
   
-    > * {
-      
-    }
+  .input__date {
+    width: 120px;
+  }
+
+  .input__edu {
+    width: 100px;
+  }
 }

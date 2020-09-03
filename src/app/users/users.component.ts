@@ -8,7 +8,7 @@ interface User {
   date: any
   marital: boolean
   edu: string
-  num: number
+  num: string
   edit: boolean
 }
 @Component({
@@ -35,11 +35,11 @@ export class UsersComponent implements OnInit {
   name: string
   sex: string
   date: any
-  marital: boolean
+  marital: boolean = false
   edu: string
-  num: number
+  num: string
 
-  addUser(name) {
+  addUser() {
     const user: User = {
       id: this.id,
       name: this.name,

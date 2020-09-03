@@ -3,14 +3,14 @@
 <div class="table mt-3">
 
   <div>
-    <th scope="col">id</th>
-    <th scope="col">Name</th>
-    <th scope="col">Sex</th>
-    <th scope="col">Date of birth</th>
-    <th scope="col">Married</th>
-    <th scope="col">University</th>
-    <th scope="col">Phone number</th>
-    <th scope="col">Edit</th>
+    <th>id</th>
+    <th>Name</th>
+    <th>Sex</th>
+    <th>Date of birth</th>
+    <th>Married</th>
+    <th>University</th>
+    <th>Phone number</th>
+    <th>Edit</th>
   </div>
 
   <form *ngFor="let user of usersService.users; index as i">
@@ -35,37 +35,80 @@
       </button>
     </div>
   </form>
-</div>
+
 
   <!-- New user line -->
-<form class="new-user-form">
-  <div><input type="number"></div>
-  <div>
-    <input
-      type="text"
-      name="name"
-      [(ngModel)]="name"
-    >
-  </div>
-  <div>
-    <input
-      type="radio"
-      name="sex"
-      [(ngModel)]="sex"
-    >
-  </div>
-  <div>
-    <input type="date" name="" id="">
-  </div>
-  <div><input type="radio" name="" id=""></div>
-  <div><input type="range" name="" id=""></div>
-  <div><input type="number" name="" id=""></div>
-  <div class="d-flex align-items-center">
-    <button (click)="addUser()" class="icon-button">
-      <i class="material-icons">add</i>
-    </button>
-    <button type="button" (click)="deleteUser" class="icon-button">
-      <i class="material-icons small">delete</i>
-    </button>
-  </div>
-</form>
+  <form class="new-user-form row">
+    <div>
+      {{usersService.users.length + 1}}
+    </div>
+    <div>
+      <input
+        class="input__name"
+        type="text"
+        name="name"
+        [(ngModel)]="name"
+      >
+    </div>
+    <div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="sex" type="radio" name="sex" id="female" value="female">
+        <label class="form-check-label" for="female">
+          female
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="sex" type="radio" name="sex" id="male" value="male">
+        <label class="form-check-label" for="male">
+          male
+        </label>
+      </div>
+    </div>
+    <div>
+      <input
+        class="input__date"
+        type="date"
+        name="date"
+        [(ngModel)]="date">
+    </div>
+    <div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="marital" type="radio" name="marital" id="married" value=true>
+        <label class="form-check-label" for="married">
+          married
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" [(ngModel)]="marital" type="radio" name="marital" id="single" value=false>
+        <label class="form-check-label" for="single">
+          single
+        </label>
+      </div>
+    </div>
+    <div>
+      <select [(ngModel)]="edu" name="edu" class="input__edu">
+        <option selected>University</option>
+        <option value="SpSU">Saint Petersburg State University</option>
+        <option value="MSU">Moscow State University</option>
+        <option value="KFU">Kazan Federal University</option>
+      </select>
+    </div>
+    <div>
+      <input
+        class="w-100"
+        type="text" 
+        name="num"
+        [(ngModel)]="num"
+      >
+    </div>
+    <div class="d-flex align-items-center">
+      <button (click)="addUser()" class="icon-button">
+        <i class="material-icons">add</i>
+      </button>
+      <button type="button" (click)="deleteUser" class="icon-button">
+        <i class="material-icons small">delete</i>
+      </button>
+    </div>
+  </form>
+
+</div>
