@@ -1,13 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
+import { UsersService } from '../shared/users.service';
 
 interface User {
   id: number
   name: string
   sex: string
   date: any
-  marital: string
+  marital: boolean
   edu: string
   num: number
+  edit: boolean
 }
 @Component({
   selector: 'app-users',
@@ -17,16 +19,37 @@ interface User {
 
 export class UsersComponent implements OnInit {
 
-  @Input() users: User[] = [
-    {id: 1, name: 'Helen', sex: 'female', date: new Date(), marital: 'single', edu: 'uni', num: 8903},
-    {id: 2, name: 'Helen', sex: 'female', date: new Date(), marital: 'single', edu: 'uni', num: 8903},
-    {id: 3, name: 'Helen', sex: 'female', date: new Date(), marital: 'single', edu: 'uni', num: 8903},
-  ]
+  constructor(private usersService: UsersService) { }
 
-  constructor() { }
+  ngOnInit() { }
 
-  ngOnInit() {
-    console.log(this.users)
+  editUser(id: number) {
+    this.usersService.editUser(id)
   }
 
+  deleteUser(id: number) {
+    this.usersService.deleteUser(id)
+  }
+
+  id: number
+  name: string
+  sex: string
+  date: any
+  marital: boolean
+  edu: string
+  num: number
+
+  addUser(name) {
+    const user: User = {
+      id: this.id,
+      name: this.name,
+      sex: this.sex,
+      date: this.date,
+      marital: this.marital,
+      edu: this.edu,
+      num: this.num,
+      edit: false,
+    }
+    this.usersService.addUser(user)
+  }
 }

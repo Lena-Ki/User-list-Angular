@@ -1,3 +1,49 @@
+.table {
+  display: table;
+  border-collapse: collapse;
+  
+  > :first-child {
+    background-color: rgba(0,0,0,.03)
+  }
+
+  > :nth-of-type(odd) {
+    background-color: rgba(0,0,0,.03)
+  }
+  
+  > * {
+    display: table-row;
+    
+    > :first-child {
+      font-weight: bold;
+    }
+
+    > * {
+      display: table-cell !important;
+      padding: .75rem;
+      border-top: 1px solid #dee2e6;
+    }
+  }
+}
+
+.icon-button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  line-height: 14px;
+}
+
 .small {
   font-size: 20px;
+}
+
+// new user form style
+
+.new-user-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+    > * {
+      
+    }
 }
